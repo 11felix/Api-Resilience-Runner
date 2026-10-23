@@ -1,0 +1,267 @@
+{
+  "version": 1,
+  "recordedAt": "2026-10-23T12:07:52.146Z",
+  "sourceSha256": "04f8cd9058c3cbd9a22e6ba3a8adb032ed8c9d3b06f978e6eab96efd89a143da",
+  "environment": {
+    "node": "v24.22.1",
+    "v8": "13.6.233.17-node.58",
+    "os": "darwin",
+    "release": "27.0.0",
+    "arch": "arm64",
+    "cpu": "Apple M3",
+    "logicalCpus": 8,
+    "ramBytes": 17179869184
+  },
+  "config": {
+    "repeats": 3,
+    "concurrency": 8,
+    "warmupMs": 500,
+    "measurementMs": 2000,
+    "requestTimeoutMs": 5000,
+    "memorySampleMs": 20,
+    "responseBytes": 262155,
+    "method": "GET",
+    "path": "/payload",
+    "requestBodyBytes": 0,
+    "connectionReuse": false,
+    "proxyFaults": false,
+    "proxyRetainedEvents": 100
+  },
+  "method": "Closed-loop concurrency; each trial in a fresh process. Latencies cover successful full bodies. Throughput includes final request drain. Memory covers client + service + optional proxy and samples at 20 ms; not proxy-only or a leak test. No forced GC. Percentiles use nearest rank within each trial.",
+  "trials": [
+    {
+      "mode": "direct",
+      "warmupRequests": 1330,
+      "warmupErrors": {},
+      "elapsedMs": 2002.098333,
+      "successfulRequests": 5718,
+      "errors": {},
+      "requestsPerSecond": 2856.0035767234217,
+      "latencyMs": {
+        "p50": 2.5530000000003383,
+        "p95": 4.70008299999995,
+        "p99": 5.504333000000088,
+        "max": 8.289417000000185
+      },
+      "memoryBytes": {
+        "baseline": {
+          "rss": 186253312,
+          "heapTotal": 163905536,
+          "heapUsed": 25096952,
+          "external": 15251288,
+          "arrayBuffers": 11290912
+        },
+        "sampledPeak": {
+          "rss": 275415040,
+          "heapTotal": 245055488,
+          "heapUsed": 106901200,
+          "external": 69977104,
+          "arrayBuffers": 62499638
+        },
+        "end": {
+          "rss": 215285760,
+          "heapTotal": 184893440,
+          "heapUsed": 47477968,
+          "external": 28891370,
+          "arrayBuffers": 24930954
+        },
+        "samples": 100
+      }
+    },
+    {
+      "mode": "proxy",
+      "warmupRequests": 818,
+      "warmupErrors": {},
+      "elapsedMs": 2005.1307080000001,
+      "successfulRequests": 3778,
+      "errors": {},
+      "requestsPerSecond": 1884.166446070906,
+      "latencyMs": {
+        "p50": 3.7720829999999523,
+        "p95": 6.6421670000001996,
+        "p99": 8.776166999999987,
+        "max": 15.823334000000159
+      },
+      "memoryBytes": {
+        "baseline": {
+          "rss": 317521920,
+          "heapTotal": 211402752,
+          "heapUsed": 75411112,
+          "external": 88148587,
+          "arrayBuffers": 84188211
+        },
+        "sampledPeak": {
+          "rss": 387989504,
+          "heapTotal": 236765184,
+          "heapUsed": 102299688,
+          "external": 136528555,
+          "arrayBuffers": 113688263
+        },
+        "end": {
+          "rss": 319373312,
+          "heapTotal": 154107904,
+          "heapUsed": 16683248,
+          "external": 14333802,
+          "arrayBuffers": 10373386
+        },
+        "samples": 100
+      }
+    },
+    {
+      "mode": "proxy",
+      "warmupRequests": 834,
+      "warmupErrors": {},
+      "elapsedMs": 2002.598625,
+      "successfulRequests": 3802,
+      "errors": {},
+      "requestsPerSecond": 1898.5332120658975,
+      "latencyMs": {
+        "p50": 3.7854999999999563,
+        "p95": 6.281958999999915,
+        "p99": 8.07566699999984,
+        "max": 18.143333999999868
+      },
+      "memoryBytes": {
+        "baseline": {
+          "rss": 227065856,
+          "heapTotal": 161021952,
+          "heapUsed": 22912368,
+          "external": 23052367,
+          "arrayBuffers": 19091991
+        },
+        "sampledPeak": {
+          "rss": 410746880,
+          "heapTotal": 253132800,
+          "heapUsed": 118423864,
+          "external": 140724083,
+          "arrayBuffers": 136763667
+        },
+        "end": {
+          "rss": 368050176,
+          "heapTotal": 182435840,
+          "heapUsed": 44984152,
+          "external": 51962198,
+          "arrayBuffers": 48001782
+        },
+        "samples": 100
+      }
+    },
+    {
+      "mode": "direct",
+      "warmupRequests": 1309,
+      "warmupErrors": {},
+      "elapsedMs": 2005.125333,
+      "successfulRequests": 5575,
+      "errors": {},
+      "requestsPerSecond": 2780.3748265744944,
+      "latencyMs": {
+        "p50": 2.5900409999999283,
+        "p95": 4.886082999999871,
+        "p99": 5.937166000000161,
+        "max": 13.30012499999998
+      },
+      "memoryBytes": {
+        "baseline": {
+          "rss": 165167104,
+          "heapTotal": 106299392,
+          "heapUsed": 35114104,
+          "external": 21025890,
+          "arrayBuffers": 17059971
+        },
+        "sampledPeak": {
+          "rss": 306118656,
+          "heapTotal": 252837888,
+          "heapUsed": 114300312,
+          "external": 73474887,
+          "arrayBuffers": 69514471
+        },
+        "end": {
+          "rss": 206831616,
+          "heapTotal": 152272896,
+          "heapUsed": 14835184,
+          "external": 8433595,
+          "arrayBuffers": 4473179
+        },
+        "samples": 101
+      }
+    },
+    {
+      "mode": "direct",
+      "warmupRequests": 1169,
+      "warmupErrors": {},
+      "elapsedMs": 2002.096709,
+      "successfulRequests": 5385,
+      "errors": {},
+      "requestsPerSecond": 2689.6802615941965,
+      "latencyMs": {
+        "p50": 2.6120420000000877,
+        "p95": 4.831584000000021,
+        "p99": 7.062082999999802,
+        "max": 38.003000000000156
+      },
+      "memoryBytes": {
+        "baseline": {
+          "rss": 173621248,
+          "heapTotal": 160923648,
+          "heapUsed": 23427208,
+          "external": 14726847,
+          "arrayBuffers": 10766471
+        },
+        "sampledPeak": {
+          "rss": 269221888,
+          "heapTotal": 246497280,
+          "heapUsed": 109274744,
+          "external": 64753994,
+          "arrayBuffers": 60075781
+        },
+        "end": {
+          "rss": 213975040,
+          "heapTotal": 190726144,
+          "heapUsed": 54073808,
+          "external": 29056222,
+          "arrayBuffers": 25095806
+        },
+        "samples": 99
+      }
+    },
+    {
+      "mode": "proxy",
+      "warmupRequests": 825,
+      "warmupErrors": {},
+      "elapsedMs": 2003.1629169999999,
+      "successfulRequests": 3621,
+      "errors": {},
+      "requestsPerSecond": 1807.641290316478,
+      "latencyMs": {
+        "p50": 3.8611660000001393,
+        "p95": 6.998458000000028,
+        "p99": 11.188792000000149,
+        "max": 27.474375000000236
+      },
+      "memoryBytes": {
+        "baseline": {
+          "rss": 203407360,
+          "heapTotal": 123813888,
+          "heapUsed": 55900568,
+          "external": 42003322,
+          "arrayBuffers": 38037403
+        },
+        "sampledPeak": {
+          "rss": 376225792,
+          "heapTotal": 237158400,
+          "heapUsed": 100133096,
+          "external": 126957261,
+          "arrayBuffers": 122996845
+        },
+        "end": {
+          "rss": 304906240,
+          "heapTotal": 156057600,
+          "heapUsed": 18641472,
+          "external": 14335050,
+          "arrayBuffers": 10374634
+        },
+        "samples": 99
+      }
+    }
+  ]
+}

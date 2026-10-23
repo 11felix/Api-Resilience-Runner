@@ -1,0 +1,877 @@
+{
+  "node": "v24.22.1",
+  "cleanSourceInstall": true,
+  "runs": [
+    {
+      "exitCode": 0,
+      "report": {
+        "reportVersion": 1,
+        "scenarioVersion": 1,
+        "runId": "4ac3e04e-ea3e-46dd-8f1a-0c435257534b",
+        "scenario": "lost-response",
+        "clientMode": "corrected",
+        "configuration": {
+          "version": 1,
+          "name": "lost-response",
+          "kind": "lost-response",
+          "client": "corrected",
+          "logicalRequestId": "order-1",
+          "maxAttempts": 2,
+          "attemptTimeoutMs": 1000,
+          "deadlineMs": 5000,
+          "proxyTimeoutMs": 2000,
+          "maxEvents": 100,
+          "rules": [
+            {
+              "id": "lose-first-response",
+              "method": "POST",
+              "path": "/orders",
+              "logicalRequestId": "order-1",
+              "attempt": 1,
+              "fault": {
+                "type": "lost-response"
+              }
+            }
+          ],
+          "expected": {
+            "outcome": "success",
+            "attempts": 2,
+            "orderCount": 1,
+            "respectRetryAfter": false
+          }
+        },
+        "status": "passed",
+        "durationMs": 23.356916000000012,
+        "timingToleranceMs": 50,
+        "client": {
+          "outcome": "success",
+          "attempts": [
+            {
+              "attempt": 1,
+              "startMs": 0.010792000000009239,
+              "endMs": 6.4419169999999895,
+              "error": "connection-failed"
+            },
+            {
+              "attempt": 2,
+              "startMs": 6.4472920000000045,
+              "endMs": 7.621250000000003,
+              "status": 201
+            }
+          ],
+          "durationMs": 7.6305830000000014
+        },
+        "orderCount": 1,
+        "droppedEvents": 0,
+        "events": [
+          {
+            "logicalRequestId": "order-1",
+            "attempt": 1,
+            "method": "POST",
+            "path": "/orders",
+            "startMs": 18.24525,
+            "forwarded": true,
+            "matchedRule": "lose-first-response",
+            "fault": "lost-response",
+            "upstreamStatus": 201,
+            "upstreamComplete": true,
+            "outcome": "response-lost",
+            "endMs": 20.927832999999993
+          },
+          {
+            "logicalRequestId": "order-1",
+            "attempt": 2,
+            "method": "POST",
+            "path": "/orders",
+            "startMs": 21.727958,
+            "forwarded": true,
+            "upstreamStatus": 201,
+            "status": 201,
+            "upstreamComplete": true,
+            "outcome": "response-written",
+            "endMs": 22.35620800000001
+          }
+        ],
+        "assertions": [
+          {
+            "name": "client outcome",
+            "passed": true,
+            "expected": "success",
+            "actual": "success"
+          },
+          {
+            "name": "order count",
+            "passed": true,
+            "expected": 1,
+            "actual": 1
+          },
+          {
+            "name": "client attempts",
+            "passed": true,
+            "expected": 2,
+            "actual": 2
+          },
+          {
+            "name": "observed proxy attempts",
+            "passed": true,
+            "expected": 2,
+            "actual": 2
+          },
+          {
+            "name": "attempt limit",
+            "passed": true,
+            "expected": 2,
+            "actual": 2
+          },
+          {
+            "name": "operation deadline (50 ms tolerance)",
+            "passed": true,
+            "expected": 5050,
+            "actual": 7.6305830000000014
+          },
+          {
+            "name": "complete event evidence",
+            "passed": true,
+            "expected": 0,
+            "actual": 0
+          },
+          {
+            "name": "fault exercised",
+            "passed": true,
+            "expected": true,
+            "actual": true
+          },
+          {
+            "name": "proxy attempts settled",
+            "passed": true,
+            "expected": true,
+            "actual": true
+          }
+        ]
+      }
+    },
+    {
+      "exitCode": 1,
+      "report": {
+        "reportVersion": 1,
+        "scenarioVersion": 1,
+        "runId": "c0a00ef3-d639-4947-a469-2f6b38fead20",
+        "scenario": "lost-response",
+        "clientMode": "flawed",
+        "configuration": {
+          "version": 1,
+          "name": "lost-response",
+          "kind": "lost-response",
+          "client": "flawed",
+          "logicalRequestId": "order-1",
+          "maxAttempts": 2,
+          "attemptTimeoutMs": 1000,
+          "deadlineMs": 5000,
+          "proxyTimeoutMs": 2000,
+          "maxEvents": 100,
+          "rules": [
+            {
+              "id": "lose-first-response",
+              "method": "POST",
+              "path": "/orders",
+              "logicalRequestId": "order-1",
+              "attempt": 1,
+              "fault": {
+                "type": "lost-response"
+              }
+            }
+          ],
+          "expected": {
+            "outcome": "success",
+            "attempts": 2,
+            "orderCount": 1,
+            "respectRetryAfter": false
+          }
+        },
+        "status": "assertion-failed",
+        "durationMs": 14.772915999999995,
+        "timingToleranceMs": 50,
+        "client": {
+          "outcome": "success",
+          "attempts": [
+            {
+              "attempt": 1,
+              "startMs": 0.010291999999999746,
+              "endMs": 4.067250000000001,
+              "error": "connection-failed"
+            },
+            {
+              "attempt": 2,
+              "startMs": 4.071792000000002,
+              "endMs": 5.155833999999999,
+              "status": 201
+            }
+          ],
+          "durationMs": 5.164959000000003
+        },
+        "orderCount": 2,
+        "droppedEvents": 0,
+        "events": [
+          {
+            "logicalRequestId": "order-1",
+            "attempt": 1,
+            "method": "POST",
+            "path": "/orders",
+            "startMs": 10.121457999999997,
+            "forwarded": true,
+            "matchedRule": "lose-first-response",
+            "fault": "lost-response",
+            "upstreamStatus": 201,
+            "upstreamComplete": true,
+            "outcome": "response-lost",
+            "endMs": 12.647749999999995
+          },
+          {
+            "logicalRequestId": "order-1",
+            "attempt": 2,
+            "method": "POST",
+            "path": "/orders",
+            "startMs": 13.201875000000001,
+            "forwarded": true,
+            "upstreamStatus": 201,
+            "status": 201,
+            "upstreamComplete": true,
+            "outcome": "response-written",
+            "endMs": 13.799500000000002
+          }
+        ],
+        "assertions": [
+          {
+            "name": "client outcome",
+            "passed": true,
+            "expected": "success",
+            "actual": "success"
+          },
+          {
+            "name": "order count",
+            "passed": false,
+            "expected": 1,
+            "actual": 2
+          },
+          {
+            "name": "client attempts",
+            "passed": true,
+            "expected": 2,
+            "actual": 2
+          },
+          {
+            "name": "observed proxy attempts",
+            "passed": true,
+            "expected": 2,
+            "actual": 2
+          },
+          {
+            "name": "attempt limit",
+            "passed": true,
+            "expected": 2,
+            "actual": 2
+          },
+          {
+            "name": "operation deadline (50 ms tolerance)",
+            "passed": true,
+            "expected": 5050,
+            "actual": 5.164959000000003
+          },
+          {
+            "name": "complete event evidence",
+            "passed": true,
+            "expected": 0,
+            "actual": 0
+          },
+          {
+            "name": "fault exercised",
+            "passed": true,
+            "expected": true,
+            "actual": true
+          },
+          {
+            "name": "proxy attempts settled",
+            "passed": true,
+            "expected": true,
+            "actual": true
+          }
+        ]
+      }
+    },
+    {
+      "exitCode": 0,
+      "report": {
+        "reportVersion": 1,
+        "scenarioVersion": 1,
+        "runId": "e3054fb9-1624-4f62-9278-028e188d1c23",
+        "scenario": "rate-limit",
+        "clientMode": "corrected",
+        "configuration": {
+          "version": 1,
+          "name": "rate-limit",
+          "kind": "rate-limit",
+          "client": "corrected",
+          "logicalRequestId": "order-1",
+          "maxAttempts": 2,
+          "attemptTimeoutMs": 1000,
+          "deadlineMs": 5000,
+          "proxyTimeoutMs": 2000,
+          "maxEvents": 100,
+          "rules": [
+            {
+              "id": "limit-first-attempt",
+              "method": "POST",
+              "path": "/orders",
+              "logicalRequestId": "order-1",
+              "attempt": 1,
+              "fault": {
+                "type": "rate-limit",
+                "delaySeconds": 1,
+                "format": "seconds"
+              }
+            }
+          ],
+          "expected": {
+            "outcome": "success",
+            "attempts": 2,
+            "orderCount": 1,
+            "respectRetryAfter": true
+          }
+        },
+        "status": "passed",
+        "durationMs": 1023.0002079999999,
+        "timingToleranceMs": 50,
+        "client": {
+          "outcome": "success",
+          "attempts": [
+            {
+              "attempt": 1,
+              "startMs": 0.011208999999993807,
+              "endMs": 1.9306669999999997,
+              "status": 429
+            },
+            {
+              "attempt": 2,
+              "startMs": 1004.005875,
+              "endMs": 1011.3727500000001,
+              "status": 201
+            }
+          ],
+          "durationMs": 1011.403042
+        },
+        "orderCount": 1,
+        "droppedEvents": 0,
+        "events": [
+          {
+            "logicalRequestId": "order-1",
+            "attempt": 1,
+            "method": "POST",
+            "path": "/orders",
+            "startMs": 10.424875,
+            "forwarded": false,
+            "matchedRule": "limit-first-attempt",
+            "fault": "rate-limit",
+            "retryAfterMs": 1000,
+            "retryAfterStartMs": 10.453083,
+            "status": 429,
+            "outcome": "response-written",
+            "endMs": 10.606708000000005
+          },
+          {
+            "logicalRequestId": "order-1",
+            "attempt": 2,
+            "method": "POST",
+            "path": "/orders",
+            "startMs": 1015.4252919999999,
+            "forwarded": true,
+            "upstreamStatus": 201,
+            "status": 201,
+            "upstreamComplete": true,
+            "outcome": "response-written",
+            "endMs": 1019.80025
+          }
+        ],
+        "assertions": [
+          {
+            "name": "client outcome",
+            "passed": true,
+            "expected": "success",
+            "actual": "success"
+          },
+          {
+            "name": "order count",
+            "passed": true,
+            "expected": 1,
+            "actual": 1
+          },
+          {
+            "name": "client attempts",
+            "passed": true,
+            "expected": 2,
+            "actual": 2
+          },
+          {
+            "name": "observed proxy attempts",
+            "passed": true,
+            "expected": 2,
+            "actual": 2
+          },
+          {
+            "name": "attempt limit",
+            "passed": true,
+            "expected": 2,
+            "actual": 2
+          },
+          {
+            "name": "operation deadline (50 ms tolerance)",
+            "passed": true,
+            "expected": 5050,
+            "actual": 1011.403042
+          },
+          {
+            "name": "complete event evidence",
+            "passed": true,
+            "expected": 0,
+            "actual": 0
+          },
+          {
+            "name": "fault exercised",
+            "passed": true,
+            "expected": true,
+            "actual": true
+          },
+          {
+            "name": "proxy attempts settled",
+            "passed": true,
+            "expected": true,
+            "actual": true
+          },
+          {
+            "name": "retry spacing after attempt 1",
+            "passed": true,
+            "expected": 1000,
+            "actual": 1004.9722089999999
+          }
+        ]
+      }
+    },
+    {
+      "exitCode": 1,
+      "report": {
+        "reportVersion": 1,
+        "scenarioVersion": 1,
+        "runId": "12955118-0d86-4aed-b7c5-58264495bbb5",
+        "scenario": "rate-limit",
+        "clientMode": "flawed",
+        "configuration": {
+          "version": 1,
+          "name": "rate-limit",
+          "kind": "rate-limit",
+          "client": "flawed",
+          "logicalRequestId": "order-1",
+          "maxAttempts": 2,
+          "attemptTimeoutMs": 1000,
+          "deadlineMs": 5000,
+          "proxyTimeoutMs": 2000,
+          "maxEvents": 100,
+          "rules": [
+            {
+              "id": "limit-first-attempt",
+              "method": "POST",
+              "path": "/orders",
+              "logicalRequestId": "order-1",
+              "attempt": 1,
+              "fault": {
+                "type": "rate-limit",
+                "delaySeconds": 1,
+                "format": "seconds"
+              }
+            }
+          ],
+          "expected": {
+            "outcome": "success",
+            "attempts": 2,
+            "orderCount": 1,
+            "respectRetryAfter": true
+          }
+        },
+        "status": "assertion-failed",
+        "durationMs": 22.49520799999999,
+        "timingToleranceMs": 50,
+        "client": {
+          "outcome": "success",
+          "attempts": [
+            {
+              "attempt": 1,
+              "startMs": 0.05720900000000029,
+              "endMs": 3.937584000000001,
+              "status": 429
+            },
+            {
+              "attempt": 2,
+              "startMs": 3.944709000000003,
+              "endMs": 10.675459000000004,
+              "status": 201
+            }
+          ],
+          "durationMs": 10.695125000000004
+        },
+        "orderCount": 1,
+        "droppedEvents": 0,
+        "events": [
+          {
+            "logicalRequestId": "order-1",
+            "attempt": 1,
+            "method": "POST",
+            "path": "/orders",
+            "startMs": 13.8035,
+            "forwarded": false,
+            "matchedRule": "limit-first-attempt",
+            "fault": "rate-limit",
+            "retryAfterMs": 1000,
+            "retryAfterStartMs": 13.844540999999992,
+            "status": 429,
+            "outcome": "response-written",
+            "endMs": 14.046624999999992
+          },
+          {
+            "logicalRequestId": "order-1",
+            "attempt": 2,
+            "method": "POST",
+            "path": "/orders",
+            "startMs": 14.934415999999999,
+            "forwarded": true,
+            "upstreamStatus": 201,
+            "status": 201,
+            "upstreamComplete": true,
+            "outcome": "response-written",
+            "endMs": 20.58749999999999
+          }
+        ],
+        "assertions": [
+          {
+            "name": "client outcome",
+            "passed": true,
+            "expected": "success",
+            "actual": "success"
+          },
+          {
+            "name": "order count",
+            "passed": true,
+            "expected": 1,
+            "actual": 1
+          },
+          {
+            "name": "client attempts",
+            "passed": true,
+            "expected": 2,
+            "actual": 2
+          },
+          {
+            "name": "observed proxy attempts",
+            "passed": true,
+            "expected": 2,
+            "actual": 2
+          },
+          {
+            "name": "attempt limit",
+            "passed": true,
+            "expected": 2,
+            "actual": 2
+          },
+          {
+            "name": "operation deadline (50 ms tolerance)",
+            "passed": true,
+            "expected": 5050,
+            "actual": 10.695125000000004
+          },
+          {
+            "name": "complete event evidence",
+            "passed": true,
+            "expected": 0,
+            "actual": 0
+          },
+          {
+            "name": "fault exercised",
+            "passed": true,
+            "expected": true,
+            "actual": true
+          },
+          {
+            "name": "proxy attempts settled",
+            "passed": true,
+            "expected": true,
+            "actual": true
+          },
+          {
+            "name": "retry spacing after attempt 1",
+            "passed": false,
+            "expected": 1000,
+            "actual": 1.0898750000000064
+          }
+        ]
+      }
+    },
+    {
+      "exitCode": 0,
+      "report": {
+        "reportVersion": 1,
+        "scenarioVersion": 1,
+        "runId": "dbb5fe6f-1a1c-4b8b-a05e-2a2602fde22a",
+        "scenario": "truncated-response",
+        "clientMode": "corrected",
+        "configuration": {
+          "version": 1,
+          "name": "truncated-response",
+          "kind": "truncated-response",
+          "client": "corrected",
+          "logicalRequestId": "read-1",
+          "maxAttempts": 1,
+          "attemptTimeoutMs": 1000,
+          "deadlineMs": 5000,
+          "proxyTimeoutMs": 2000,
+          "maxEvents": 100,
+          "rules": [
+            {
+              "id": "truncate-first-response",
+              "method": "GET",
+              "path": "/payload",
+              "logicalRequestId": "read-1",
+              "attempt": 1,
+              "fault": {
+                "type": "truncate",
+                "bytes": 128
+              }
+            }
+          ],
+          "expected": {
+            "outcome": "failure",
+            "attempts": 1,
+            "orderCount": 0,
+            "respectRetryAfter": false
+          }
+        },
+        "status": "passed",
+        "durationMs": 15.858334,
+        "timingToleranceMs": 50,
+        "client": {
+          "outcome": "failure",
+          "attempts": [
+            {
+              "attempt": 1,
+              "startMs": 0.012167000000005146,
+              "endMs": 5.929124999999999,
+              "error": "incomplete-response"
+            }
+          ],
+          "durationMs": 5.951958000000005,
+          "reason": "incomplete-response"
+        },
+        "orderCount": 0,
+        "droppedEvents": 0,
+        "events": [
+          {
+            "logicalRequestId": "read-1",
+            "attempt": 1,
+            "method": "GET",
+            "path": "/payload",
+            "startMs": 10.481875000000002,
+            "forwarded": true,
+            "matchedRule": "truncate-first-response",
+            "fault": "truncate",
+            "upstreamStatus": 200,
+            "status": 200,
+            "outcome": "response-truncated",
+            "endMs": 13.385166999999996
+          }
+        ],
+        "assertions": [
+          {
+            "name": "client outcome",
+            "passed": true,
+            "expected": "failure",
+            "actual": "failure"
+          },
+          {
+            "name": "order count",
+            "passed": true,
+            "expected": 0,
+            "actual": 0
+          },
+          {
+            "name": "client attempts",
+            "passed": true,
+            "expected": 1,
+            "actual": 1
+          },
+          {
+            "name": "observed proxy attempts",
+            "passed": true,
+            "expected": 1,
+            "actual": 1
+          },
+          {
+            "name": "attempt limit",
+            "passed": true,
+            "expected": 1,
+            "actual": 1
+          },
+          {
+            "name": "operation deadline (50 ms tolerance)",
+            "passed": true,
+            "expected": 5050,
+            "actual": 5.951958000000005
+          },
+          {
+            "name": "complete event evidence",
+            "passed": true,
+            "expected": 0,
+            "actual": 0
+          },
+          {
+            "name": "fault exercised",
+            "passed": true,
+            "expected": true,
+            "actual": true
+          },
+          {
+            "name": "proxy attempts settled",
+            "passed": true,
+            "expected": true,
+            "actual": true
+          }
+        ]
+      }
+    },
+    {
+      "exitCode": 1,
+      "report": {
+        "reportVersion": 1,
+        "scenarioVersion": 1,
+        "runId": "51737b3b-14b9-4bf4-8859-e7ebe0fb9386",
+        "scenario": "truncated-response",
+        "clientMode": "flawed",
+        "configuration": {
+          "version": 1,
+          "name": "truncated-response",
+          "kind": "truncated-response",
+          "client": "flawed",
+          "logicalRequestId": "read-1",
+          "maxAttempts": 1,
+          "attemptTimeoutMs": 1000,
+          "deadlineMs": 5000,
+          "proxyTimeoutMs": 2000,
+          "maxEvents": 100,
+          "rules": [
+            {
+              "id": "truncate-first-response",
+              "method": "GET",
+              "path": "/payload",
+              "logicalRequestId": "read-1",
+              "attempt": 1,
+              "fault": {
+                "type": "truncate",
+                "bytes": 128
+              }
+            }
+          ],
+          "expected": {
+            "outcome": "failure",
+            "attempts": 1,
+            "orderCount": 0,
+            "respectRetryAfter": false
+          }
+        },
+        "status": "assertion-failed",
+        "durationMs": 13.452792000000002,
+        "timingToleranceMs": 50,
+        "client": {
+          "outcome": "success",
+          "attempts": [
+            {
+              "attempt": 1,
+              "startMs": 0.010083000000001618,
+              "endMs": 2.8652919999999966,
+              "status": 200
+            }
+          ],
+          "durationMs": 2.876792000000002
+        },
+        "orderCount": 0,
+        "droppedEvents": 0,
+        "events": [
+          {
+            "logicalRequestId": "read-1",
+            "attempt": 1,
+            "method": "GET",
+            "path": "/payload",
+            "startMs": 10.278125000000003,
+            "forwarded": true,
+            "matchedRule": "truncate-first-response",
+            "fault": "truncate",
+            "upstreamStatus": 200,
+            "status": 200,
+            "outcome": "response-truncated",
+            "endMs": 11.636083
+          }
+        ],
+        "assertions": [
+          {
+            "name": "client outcome",
+            "passed": false,
+            "expected": "failure",
+            "actual": "success"
+          },
+          {
+            "name": "order count",
+            "passed": true,
+            "expected": 0,
+            "actual": 0
+          },
+          {
+            "name": "client attempts",
+            "passed": true,
+            "expected": 1,
+            "actual": 1
+          },
+          {
+            "name": "observed proxy attempts",
+            "passed": true,
+            "expected": 1,
+            "actual": 1
+          },
+          {
+            "name": "attempt limit",
+            "passed": true,
+            "expected": 1,
+            "actual": 1
+          },
+          {
+            "name": "operation deadline (50 ms tolerance)",
+            "passed": true,
+            "expected": 5050,
+            "actual": 2.876792000000002
+          },
+          {
+            "name": "complete event evidence",
+            "passed": true,
+            "expected": 0,
+            "actual": 0
+          },
+          {
+            "name": "fault exercised",
+            "passed": true,
+            "expected": true,
+            "actual": true
+          },
+          {
+            "name": "proxy attempts settled",
+            "passed": true,
+            "expected": true,
+            "actual": true
+          }
+        ]
+      }
+    }
+  ]
+}

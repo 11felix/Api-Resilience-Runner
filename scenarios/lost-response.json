@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "name": "lost-response",
+  "kind": "lost-response",
+  "logicalRequestId": "order-1",
+  "rules": [
+    { "id": "lose-first-response", "method": "POST", "path": "/orders", "logicalRequestId": "order-1", "attempt": 1, "fault": { "type": "lost-response" } }
+  ],
+  "expected": { "outcome": "success", "attempts": 2, "orderCount": 1 }
+}

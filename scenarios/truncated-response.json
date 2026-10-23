@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "name": "truncated-response",
+  "kind": "truncated-response",
+  "logicalRequestId": "read-1",
+  "maxAttempts": 1,
+  "rules": [
+    { "id": "truncate-first-response", "method": "GET", "path": "/payload", "logicalRequestId": "read-1", "attempt": 1, "fault": { "type": "truncate", "bytes": 128 } }
+  ],
+  "expected": { "outcome": "failure", "attempts": 1, "orderCount": 0 }
+}
