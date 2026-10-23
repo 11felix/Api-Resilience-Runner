@@ -14,11 +14,11 @@
 
 Three required scenarios:
 
-| Scenario | Injected behaviour | Assertion | Deliberately flawed client |
-|---|---|---|---|
-| Response lost after successful order creation | Forward the request; consume the upstream response; destroy the downstream connection without sending that response | Exactly one order exists after retries | Retries without an idempotency key |
-| Rate limiting | Return `429` and `Retry-After` before forwarding selected attempts | Client waits appropriately and respects its attempt limit | Retries immediately or indefinitely |
-| Truncated response | Forward a bounded prefix of a known response and close the connection before completion | Client rejects incomplete data and terminates within its deadline | Treats partial content as success or never settles |
+| Scenario                                      | Injected behaviour                                                                                                  | Assertion                                                         | Deliberately flawed client                         |
+| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- | -------------------------------------------------- |
+| Response lost after successful order creation | Forward the request; consume the upstream response; destroy the downstream connection without sending that response | Exactly one order exists after retries                            | Retries without an idempotency key                 |
+| Rate limiting                                 | Return `429` and `Retry-After` before forwarding selected attempts                                                  | Client waits appropriately and respects its attempt limit         | Retries immediately or indefinitely                |
+| Truncated response                            | Forward a bounded prefix of a known response and close the connection before completion                             | Client rejects incomplete data and terminates within its deadline | Treats partial content as success or never settles |
 
 Each scenario has a corrected client that passes. The order service must explicitly confirm the side effect; a proxy observing a response does not prove arbitrary business transactions committed.
 

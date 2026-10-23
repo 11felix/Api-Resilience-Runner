@@ -169,10 +169,13 @@ To follow the implementation, read the Zod schema, then the `POST /orders` handl
 ## Development checks
 
 ```sh
+npm run format:check
 npm run typecheck
 npm run lint
 npm test
 ```
+
+Run `npm run format` to format source, tests, configuration, and documentation with Prettier. Generated build output, dependencies, PDF artifacts, and the generated package lock are excluded.
 
 `npm test` builds the project and runs local-socket integration tests with `node:test` and `node:assert/strict`.
 

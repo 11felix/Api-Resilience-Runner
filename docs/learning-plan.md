@@ -24,13 +24,13 @@ Keep a short learning log: prediction, observed behaviour, explanation, and rema
 
 Plan for roughly 74–106 focused hours, not a weekend. These are estimates; streaming and lifecycle debugging may take longer.
 
-| Week | Project work | Hours |
-|---|---|---:|
-| 1 | Foundations, demo service, basic proxy | 18–22 |
-| 2 | Streaming baseline, cleanup, initial faults | 18–22 |
-| 3 | Remaining faults, flawed/corrected clients, assertions | 18–22 |
-| 4 | Runner, reports, integration tests | 14–20 |
-| 5 if needed | Measurements, README, short demo | 6–20 |
+| Week        | Project work                                           | Hours |
+| ----------- | ------------------------------------------------------ | ----: |
+| 1           | Foundations, demo service, basic proxy                 | 18–22 |
+| 2           | Streaming baseline, cleanup, initial faults            | 18–22 |
+| 3           | Remaining faults, flawed/corrected clients, assertions | 18–22 |
+| 4           | Runner, reports, integration tests                     | 14–20 |
+| 5 if needed | Measurements, README, short demo                       |  6–20 |
 
 At 50–60 study hours/week, reserve about 20 for this project, 15 for DSA, 10 for system design/SQL, and 5 for applications/mocks. Use remaining time for weak areas or revision. Do not postpone applications until the project is finished.
 

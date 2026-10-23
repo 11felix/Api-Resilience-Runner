@@ -4,7 +4,19 @@
   "kind": "rate-limit",
   "logicalRequestId": "order-1",
   "rules": [
-    { "id": "limit-first-attempt", "method": "POST", "path": "/orders", "logicalRequestId": "order-1", "attempt": 1, "fault": { "type": "rate-limit", "delaySeconds": 1, "format": "seconds" } }
+    {
+      "id": "limit-first-attempt",
+      "method": "POST",
+      "path": "/orders",
+      "logicalRequestId": "order-1",
+      "attempt": 1,
+      "fault": { "type": "rate-limit", "delaySeconds": 1, "format": "seconds" }
+    }
   ],
-  "expected": { "outcome": "success", "attempts": 2, "orderCount": 1, "respectRetryAfter": true }
+  "expected": {
+    "outcome": "success",
+    "attempts": 2,
+    "orderCount": 1,
+    "respectRetryAfter": true
+  }
 }

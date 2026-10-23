@@ -16,7 +16,12 @@ export type AttemptEvent = {
   outcome?: string;
 };
 
-export type Assertion = { name: string; passed: boolean; expected: unknown; actual: unknown };
+export type Assertion = {
+  name: string;
+  passed: boolean;
+  expected: unknown;
+  actual: unknown;
+};
 
 export function createCollector(limit: number, started = performance.now()) {
   const events: AttemptEvent[] = [];
@@ -28,10 +33,17 @@ export function createCollector(limit: number, started = performance.now()) {
       if (events.length < limit) events.push(event);
       else dropped += 1;
     },
-    get dropped() { return dropped; },
+    get dropped() {
+      return dropped;
+    },
   };
 }
 
-export function check(name: string, expected: unknown, actual: unknown, passed = expected === actual): Assertion {
+export function check(
+  name: string,
+  expected: unknown,
+  actual: unknown,
+  passed = expected === actual,
+): Assertion {
   return { name, passed, expected, actual };
 }

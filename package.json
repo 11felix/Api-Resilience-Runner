@@ -13,12 +13,15 @@
     "benchmark": "npm run build && node dist/bench/benchmark.js",
     "typecheck": "tsc --noEmit",
     "test": "npm run build && node --test dist/test/*.test.js",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@types/node": "^24.19.2",
     "eslint": "^10.13.0",
+    "prettier": "3.9.10",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.72.0"
   },
